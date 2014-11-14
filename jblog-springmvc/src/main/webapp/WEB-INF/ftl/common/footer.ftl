@@ -1,85 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %></title>
-    <meta charset="utf-8">
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/bootstrap-responsive.min.css" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/fuc.js"></script>
 
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-    <link href="/stylesheets/index.css" rel="stylesheet">
-
-</head>
-<body>
-
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span12 navbar navbar-fixed-top navbar-inner">
-            <ul class="nav nav-pills">
-                <!--                        <li >
-                                            <a href="#">首页</a>
-                                        </li>-->
-                <% productorList.forEach(function (productor, index) { %>
-                <li <% if(curProductor == index) { %> class="active" <% } %> >
-                <a href="/p?productor=<%= index %>&classification=0"><i class="icon-star"></i> <%= productor %></a>
-                </li>
-                <% }) %>
-                <% if(user) { %>
-                <li class="dropdown pull-right">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%= user.name %><strong class="caret"></strong></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="/post">发表</a>
-                        </li>
-                        <li>
-                            <a href="/upload">上传</a>
-                        </li>
-                        <li>
-                            <a href="/logout">登出</a>
-                        </li>
-                    </ul>
-                </li>
-                <% } else { %>
-                <li class="pull-right">
-                    <a  href="/login"><span class="btn-block">登陆</span></a>
-                </li>
-                <% } %>
-                <li class="pull-right">
-                    <form class="form-search" action="/p" method="get">
-                        <input  name='searchType' value='title' type="hidden" />
-                        <input class="input-medium search-query" <% if (typeof keyword !== 'undefined') { %>value="<%= keyword %>" <% } %> name='keyword' type="text" /> <button type="submit" class="btn">查找</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
+</div>
+<!-- END page-content-body -->
+</div>
+<!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="footer-inner">
+        2014 &copy; by jewelknife.
     </div>
-    <!--<header class="jumbotron subhead" id="overview">-->
-    <!--<div class="container">-->
-    <!--<h1>组件</h1>-->
-    <!--<p class="lead">无数可复用的组件，包括导航、警告框、弹出框等更多功能。</p>-->
-    <!--</div>-->
-    <!--</header>-->
-
-    <article  >
-        <% if (success) { %>
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4>Well done!</h4>
-            <%= success %>.
-        </div>
-        <% } %>
-        <% if (error) { %>
-        <div class="alert alert-block">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4>Warning!</h4>
-            <%= error %>
-        </div>
-        <% } %>
-    </article>
-
-    <div class="row-fluid m-top3">
+    <div class="footer-tools">
+			<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+			</span>
+    </div>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="/assets/plugins/respond.min.js"></script>
+<script src="/assets/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+<script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="/assets/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+<script src="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
+<script src="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+<script src="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
+<script src="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
+<script src="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
+<script src="/assets/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+<script src="/assets/plugins/flot/jquery.flot.js" type="text/javascript"></script>
+<script src="/assets/plugins/flot/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery.pulsate.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<script src="/assets/plugins/gritter/js/jquery.gritter.js" type="text/javascript"></script>
+<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+<script src="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="/assets/scripts/app.js" type="text/javascript"></script>
+<script src="/assets/scripts/index.js" type="text/javascript"></script>
+<script src="/assets/scripts/tasks.js" type="text/javascript"></script>
+<script src="/js/pagemenu.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    jQuery(document).ready(function() {
+        App.init(); // initlayout and core plugins
+        Index.init();
+        Index.initJQVMAP(); // init index page's custom scripts
+        Index.initCalendar(); // init index page's custom scripts
+        Index.initCharts(); // init index page's custom scripts
+        Index.initChat();
+        Index.initMiniCharts();
+        Index.initDashboardDaterange();
+        Index.initIntro();
+        Tasks.initDashboardWidget();
+        PageMenu.init();
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

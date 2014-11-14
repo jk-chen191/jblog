@@ -15,8 +15,12 @@
  */
 package test.org.jewelknife.jblog;
 
+import org.jewelknife.jblog.jpa.User;
 import org.jewelknife.jblog.jpa.UserRepository;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.context.ApplicationContext;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -29,22 +33,20 @@ import static org.junit.Assert.assertThat;
  * 
  * @author Oliver Gierke
  */
-@ContextConfiguration
+@ContextConfiguration(value = "classpath:application-jpa-context.xml")
 public class UserRepositoryIntegrationTest extends AbstractIntegrationTest {
 
 	@Autowired
     UserRepository userRepository;
 
+    @Test
+	public void insertsNewCustomerCorrectly() {
 
+		User user = new User("Alicia", "Keys", "jewelnife@qq.com");
+        user = userRepository.save(user);
 
-//	@Test
-//	public void insertsNewCustomerCorrectly() {
-//
-//		User user = new User("Alicia", "Keys", "jewelnife@qq.com");
-//        user = userRepository.save(user);
-//
-//		assertThat(user.getId(), is(notNullValue()));
-//	}
+		assertThat(user.getId(), is(notNullValue()));
+	}
 //
 //	@Test
 //	public void updatesCustomerCorrectly() {
