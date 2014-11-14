@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jBlog.iml" filepath="$PROJECT_DIR$/jBlog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jblog-service/jblog-service.iml" filepath="$PROJECT_DIR$/jblog-service/jblog-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/jblog-springmvc/jblog-springmvc.iml" filepath="$PROJECT_DIR$/jblog-springmvc/jblog-springmvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/jblog-struts/jblog-struts.iml" filepath="$PROJECT_DIR$/jblog-struts/jblog-struts.iml" />
     </modules>
