@@ -12,7 +12,7 @@ CREATE TABLE user (
   `last_visit_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY (email)
-) ENGINE=Innodb AUTO_INCREMENT=1440 DEFAULT CHARSET=latin1
+) ENGINE=Innodb AUTO_INCREMENT=1440 DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE post (
@@ -24,4 +24,4 @@ CREATE TABLE post (
   `updated_by` smallint(5) unsigned NOT NULL DEFAULT '0',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=Innodb AUTO_INCREMENT=1440 DEFAULT CHARSET=latin1
+) ENGINE=Innodb AUTO_INCREMENT=1440 DEFAULT CHARSET=latin1;
