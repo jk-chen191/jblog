@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 /**
  * Created by chen_yingbo on 11/14/14.
  */
-@Entity
+@Entity(name = "user")
 public class User extends AbstractEntity {
 
     private String username;

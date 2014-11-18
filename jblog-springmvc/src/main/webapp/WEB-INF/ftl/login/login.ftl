@@ -55,10 +55,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <button class="close" data-close="alert"></button>
             <span>Enter any username and password.</span>
         </div>
-        <#if (error!false) >
+        <#if errorMsg?? >
         <div class="alert alert-danger">
             <button class="close" data-close="alert"></button>
-            <span> ${error}</span>
+            <span> ${errorMsg}</span>
         </div>
         </#if>
         <div class="form-group">

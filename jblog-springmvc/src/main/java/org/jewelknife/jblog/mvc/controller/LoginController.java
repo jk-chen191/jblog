@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by chen_yingbo on 11/13/14.
@@ -25,14 +23,22 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public @ResponseBody String login(User userform, Model model) {
+    public String login(User userform, Model model) {
         User user = userRepository.findByUsername(userform.getUsername());
 
         if (user == null) {
-            return "username is not found!";
+            model.addAttribute("errorMsg", "User is not existst !");
+            return null;
         }
 
-        return "redirect:home";
+        user = userRepository.findByUsernameAndPassword(userform.getUsername(), userform.getPassword());
+
+        if (user == null) {
+            model.addAttribute("errorMsg", "Password is not correctly !");
+            return null;
+        }
+
+        return "redirect:/home";
     }
 
 }
