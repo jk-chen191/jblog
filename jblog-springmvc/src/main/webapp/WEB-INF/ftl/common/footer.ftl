@@ -55,21 +55,21 @@
 <script src="${rc.contextPath}/assets/scripts/app.js" type="text/javascript"></script>
 <script src="${rc.contextPath}/assets/scripts/index.js" type="text/javascript"></script>
 <script src="${rc.contextPath}/assets/scripts/tasks.js" type="text/javascript"></script>
-<script src="/js/pagemenu.js" type="text/javascript"></script>
+<#--<script src="/js/pagemenu.js" type="text/javascript"></script>-->
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
         App.init(); // initlayout and core plugins
-        Index.init();
-        Index.initJQVMAP(); // init index page's custom scripts
-        Index.initCalendar(); // init index page's custom scripts
-        Index.initCharts(); // init index page's custom scripts
-        Index.initChat();
-        Index.initMiniCharts();
-        Index.initDashboardDaterange();
-        Index.initIntro();
-        Tasks.initDashboardWidget();
-        PageMenu.init();
+//        Index.init();
+//        Index.initJQVMAP(); // init index page's custom scripts
+//        Index.initCalendar(); // init index page's custom scripts
+//        Index.initCharts(); // init index page's custom scripts
+//        Index.initChat();
+//        Index.initMiniCharts();
+//        Index.initDashboardDaterange();
+//        Index.initIntro();
+//        Tasks.initDashboardWidget();
+//        PageMenu.init();
     });
 </script>
 <!-- END JAVASCRIPTS -->

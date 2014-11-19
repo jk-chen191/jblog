@@ -15,17 +15,15 @@
  */
 package test.org.jewelknife.jblog;
 
-import org.jewelknife.jblog.jpa.User;
-import org.jewelknife.jblog.jpa.UserRepository;
+import org.jewelknife.jblog.jpa.Blog;
+import org.jewelknife.jblog.jpa.BlogRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.ApplicationContext;
-//import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import java.util.Date;
 
 /**
  * Integration test for the manual implementation ({@link org.jewelknife.jblog.jpa.UserRepository}) of the {@link org.jewelknife.jblog.jpa.UserRepository}
@@ -37,27 +35,16 @@ import static org.junit.Assert.assertThat;
 public class BlogRepositoryTest extends AbstractIntegrationTest {
 
 	@Autowired
-    UserRepository userRepository;
+    BlogRepository blogRepository;
+
 
     @Test
-	public void insertsNewCustomerCorrectly() {
+    public void findByCreatedByTest() {
+        blogRepository.save(new Blog("test 1", "content 1", (long) 1, new Date()));
+        blogRepository.save(new Blog("test 2", "content 2", (long) 1, new Date()));
+//        Page<Blog> page = blogRepository.findByCreatedBy(new Long(1), new PageRequest(1, 10));
+        Page<Blog> page = blogRepository.findAll(new PageRequest(0, 10));
+        System.out.println(page.getContent().size());
+    }
 
-		User user = new User("Alicia", "Keys", "jewelnife@qq.com");
-        user = userRepository.save(user);
-
-		assertThat(user.getId(), is(notNullValue()));
-	}
-//
-	@Test
-	public void updatesCustomerCorrectly() {
-
-        User dave = userRepository.findByUsername("jewelknife");
-		assertThat(dave, is(notNullValue()));
-
-		dave.setUsername("Miller");
-		dave = userRepository.save(dave);
-
-        User reference = userRepository.findByUsername(dave.getUsername());
-		assertThat(reference.getUsername(), is(dave.getUsername()));
-	}
 }

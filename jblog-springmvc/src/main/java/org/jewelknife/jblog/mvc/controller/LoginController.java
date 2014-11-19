@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by chen_yingbo on 11/13/14.
  */
@@ -23,7 +25,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(User userform, Model model) {
+    public String login(User userform, Model model, HttpSession session) {
         User user = userRepository.findByUsername(userform.getUsername());
 
         if (user == null) {
@@ -37,6 +39,8 @@ public class LoginController {
             model.addAttribute("errorMsg", "Password is not correctly !");
             return null;
         }
+
+        session.setAttribute("loginUser", user);
 
         return "redirect:/home";
     }
