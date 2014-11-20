@@ -23,6 +23,12 @@
     </div>
 </div>
 <!-- END PAGE HEADER-->
+<#if errorMsg?? >
+<div class="alert alert-danger">
+    <button class="close" data-close="alert"></button>
+    <span> ${errorMsg}</span>
+</div>
+</#if>
 <div class="row">
     <div class="col-md-12 ">
 
@@ -37,12 +43,6 @@
                 </div>
             </div>
             <div class="portlet-body form">
-            <#if errorMsg?? >
-                <div class="alert alert-danger">
-                    <button class="close" data-close="alert"></button>
-                    <span> ${errorMsg}</span>
-                </div>
-            </#if>
                 <form class="form-horizontal"  method="post" role="form" >
                     <div class="form-body">
                         <div class="form-group">
@@ -92,7 +92,7 @@
                             <label class="col-md-3 control-label">详情</label>
 
                             <div class="col-md-9">
-                                <textarea class="form-control" name="content" rows="15"><#if failBean??>value="${failBean.content}"</#if></textarea>
+                                <textarea class="form-control" name="content" rows="15"><#if failBean??>${failBean.content}</#if></textarea>
                             </div>
                         </div>
                     </div>

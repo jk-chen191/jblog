@@ -8,21 +8,21 @@
             Blog Post <small>blog post samples</small>
         </h3>
         <ul class="page-breadcrumb breadcrumb">
-            <li class="btn-group">
-                <button type="button" class="btn blue dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                    <span>Actions</span> <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </li>
+            <#--<li class="btn-group">-->
+                <#--<button type="button" class="btn blue dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">-->
+                    <#--<span>Actions</span> <i class="fa fa-angle-down"></i>-->
+                <#--</button>-->
+                <#--<ul class="dropdown-menu pull-right" role="menu">-->
+                    <#--<li><a href="#">Action</a></li>-->
+                    <#--<li><a href="#">Another action</a></li>-->
+                    <#--<li><a href="#">Something else here</a></li>-->
+                    <#--<li class="divider"></li>-->
+                    <#--<li><a href="#">Separated link</a></li>-->
+                <#--</ul>-->
+            <#--</li>-->
             <li>
                 <i class="fa fa-home"></i>
-                <a href="index.html">Home</a>
+                <a href="${rc.contextPath}/home">Home</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
@@ -44,7 +44,7 @@
 <div class="col-md-9 article-block">
     <h3>${blog.title}</h3>
     <div class="blog-tag-data">
-        <img src="assets/img/gallery/item_img.jpg" class="img-responsive" alt="">
+        <img src="${rc.contextPath}/assets/img/gallery/item_img.jpg" class="img-responsive" alt="">
         <div class="row">
             <div class="col-md-6">
                 <ul class="list-inline blog-tags">
@@ -58,7 +58,7 @@
             </div>
             <div class="col-md-6 blog-tag-data-inner">
                 <ul class="list-inline">
-                    <li><i class="fa fa-calendar"></i> <a href="#">April 16, 2013</a></li>
+                    <li><i class="fa fa-calendar"></i> <a href="#">${blog.createdAt}</a></li>
                     <li><i class="fa fa-comments"></i> <a href="#">38 Comments</a></li>
                 </ul>
             </div>
@@ -72,7 +72,7 @@
     <div class="media">
         <h3>Comments</h3>
         <a href="#" class="pull-left">
-            <img alt="" src="assets/img/blog/9.jpg" class="media-object">
+            <img alt="" src="${rc.contextPath}/assets/img/blog/9.jpg" class="media-object">
         </a>
         <div class="media-body">
             <h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>
@@ -81,7 +81,7 @@
             <!-- Nested media object -->
             <div class="media">
                 <a href="#" class="pull-left">
-                    <img alt="" src="assets/img/blog/5.jpg" class="media-object">
+                    <img alt="" src="${rc.contextPath}/assets/img/blog/5.jpg" class="media-object">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>
@@ -92,7 +92,7 @@
             <hr>
             <div class="media">
                 <a href="#" class="pull-left">
-                    <img alt="" src="assets/img/blog/7.jpg" class="media-object">
+                    <img alt="" src="${rc.contextPath}/assets/img/blog/7.jpg" class="media-object">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>
@@ -105,7 +105,7 @@
     <!--end media-->
     <div class="media">
         <a href="#" class="pull-left">
-            <img alt="" src="assets/img/blog/6.jpg" class="media-object">
+            <img alt="" src="${rc.contextPath}/assets/img/blog/6.jpg" class="media-object">
         </a>
         <div class="media-body">
             <h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
@@ -140,21 +140,21 @@
     <h3>Flickr</h3>
     <ul class="list-inline blog-images">
         <li>
-            <a  class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="assets/img/blog/1.jpg">
-                <img alt="" src="assets/img/blog/1.jpg">
+            <a  class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="${rc.contextPath}/assets/img/blog/1.jpg">
+                <img alt="" src="${rc.contextPath}/assets/img/blog/1.jpg">
             </a>
         </li>
-        <li><a href="#"><img alt="" src="assets/img/blog/2.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/3.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/4.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/5.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/6.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/8.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/10.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/11.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/1.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/2.jpg"></a></li>
-        <li><a href="#"><img alt="" src="assets/img/blog/7.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/2.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/3.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/4.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/5.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/6.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/8.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/10.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/11.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/1.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/2.jpg"></a></li>
+        <li><a href="#"><img alt="" src="${rc.contextPath}/assets/img/blog/7.jpg"></a></li>
     </ul>
     <div class="space20"></div>
     <h3>Top Entiries</h3>

@@ -98,7 +98,7 @@
             <ul class="dropdown-menu-list scroller" style="height: 250px;">
                 <li>
                     <a href="inbox.html?a=view">
-                        <span class="photo"><img src="./assets/img/avatar2.jpg" alt=""/></span>
+                        <span class="photo"><img src="${rc.contextPath}/assets/img/avatar2.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Lisa Wong</span>
 									<span class="time">Just Now</span>
@@ -111,7 +111,7 @@
                 </li>
                 <li>
                     <a href="inbox.html?a=view">
-                        <span class="photo"><img src="./assets/img/avatar3.jpg" alt=""/></span>
+                        <span class="photo"><img src="${rc.contextPath}/assets/img/avatar3.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Richard Doe</span>
 									<span class="time">16 mins</span>
@@ -124,7 +124,7 @@
                 </li>
                 <li>
                     <a href="inbox.html?a=view">
-                        <span class="photo"><img src="./assets/img/avatar1.jpg" alt=""/></span>
+                        <span class="photo"><img src="${rc.contextPath}/assets/img/avatar1.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Bob Nilson</span>
 									<span class="time">2 hrs</span>
@@ -137,7 +137,7 @@
                 </li>
                 <li>
                     <a href="inbox.html?a=view">
-                        <span class="photo"><img src="./assets/img/avatar2.jpg" alt=""/></span>
+                        <span class="photo"><img src="${rc.contextPath}/assets/img/avatar2.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Lisa Wong</span>
 									<span class="time">40 mins</span>
@@ -149,7 +149,7 @@
                 </li>
                 <li>
                     <a href="inbox.html?a=view">
-                        <span class="photo"><img src="./assets/img/avatar3.jpg" alt=""/></span>
+                        <span class="photo"><img src="${rc.contextPath}/assets/img/avatar3.jpg" alt=""/></span>
 									<span class="subject">
 									<span class="from">Richard Doe</span>
 									<span class="time">46 mins</span>
@@ -282,8 +282,8 @@
 <!-- BEGIN USER LOGIN DROPDOWN -->
 <li class="dropdown user">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <img alt="" src="assets/img/avatar1_small.jpg"/>
-        <span class="username"><#if user??>${(user.username)!""}</#if></span>
+        <img alt="" src="${rc.contextPath}/assets/img/avatar1_small.jpg"/>
+        <span class="username"><#if Session["loginUser"]??>${Session["loginUser"].username}</#if></span>
         <i class="fa fa-angle-down"></i>
     </a>
     <ul class="dropdown-menu">
@@ -294,7 +294,7 @@
         <li class="divider"></li>
         <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> Full Screen</a></li>
         <li><a href="extra_lock.html"><i class="fa fa-lock"></i> Lock Screen</a></li>
-        <li><a href="/logout"><i class="fa fa-key"></i>登出</a></li>
+        <li><a href="${rc.contextPath}/login/logout"><i class="fa fa-key"></i>登出</a></li>
     </ul>
 </li>
 <!-- END USER LOGIN DROPDOWN -->

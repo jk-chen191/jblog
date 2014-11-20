@@ -12,7 +12,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <html lang="en" class="no-js"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>jBlog</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -65,9 +65,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
             <img src="${rc.contextPath}/assets/img/menu-toggler.png" alt=""/>
         </a>
         <!-- END RESPONSIVE MENU TOGGLER -->
-        <!-- BEGIN TOP NAVIGATION MENU -->
-    <#include "/common/topmenu.ftl" >
-        <!-- END TOP NAVIGATION MENU -->
+
+        <#if Session["loginUser"]??>
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <#include "/common/topmenu.ftl" >
+            <!-- END TOP NAVIGATION MENU -->
+        </#if>
+
     </div>
     <!-- END TOP NAVIGATION BAR -->
 </div>
@@ -75,9 +79,89 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
+
+<#if Session["loginUser"]??>
     <!-- BEGIN SIDEBAR -->
-<#include "/common/sidebar.ftl" >
+    <#include "/common/sidebar.ftl" >
     <!-- END SIDEBAR -->
+<#else>
+<ul class="nav navbar-nav pull-right">
+    <li><a href="${rc.contextPath}/login/login"><i class="fa fa-key"></i>登录</a></li>
+</ul>
+</#if>
+
+    <!-- BEGIN PAGE -->
+    <div class="page-content">
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        Widget settings form goes here
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn blue">Save changes</button>
+                        <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <!-- BEGIN STYLE CUSTOMIZER -->
+        <div class="theme-panel hidden-xs hidden-sm">
+            <div class="toggler"></div>
+            <div class="toggler-close"></div>
+            <div class="theme-options">
+                <div class="theme-option theme-colors clearfix">
+                    <span>THEME COLOR</span>
+                    <ul>
+                        <li class="color-black current color-default" data-style="default"></li>
+                        <li class="color-blue" data-style="blue"></li>
+                        <li class="color-brown" data-style="brown"></li>
+                        <li class="color-purple" data-style="purple"></li>
+                        <li class="color-grey" data-style="grey"></li>
+                        <li class="color-white color-light" data-style="light"></li>
+                    </ul>
+                </div>
+                <div class="theme-option">
+                    <span>Layout</span>
+                    <select class="layout-option form-control input-small">
+                        <option value="fluid" selected="selected">Fluid</option>
+                        <option value="boxed">Boxed</option>
+                    </select>
+                </div>
+                <div class="theme-option">
+                    <span>Header</span>
+                    <select class="header-option form-control input-small">
+                        <option value="fixed" selected="selected">Fixed</option>
+                        <option value="default">Default</option>
+                    </select>
+                </div>
+                <div class="theme-option">
+                    <span>Sidebar</span>
+                    <select class="sidebar-option form-control input-small">
+                        <option value="fixed">Fixed</option>
+                        <option value="default" selected="selected">Default</option>
+                    </select>
+                </div>
+                <div class="theme-option">
+                    <span>Footer</span>
+                    <select class="footer-option form-control input-small">
+                        <option value="fixed">Fixed</option>
+                        <option value="default" selected="selected">Default</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- END BEGIN STYLE CUSTOMIZER -->
 
     <!-- BEGIN page-content-body -->
     <div class="page-content-body">

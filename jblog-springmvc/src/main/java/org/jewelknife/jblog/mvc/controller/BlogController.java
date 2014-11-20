@@ -1,19 +1,19 @@
 package org.jewelknife.jblog.mvc.controller;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jewelknife.jblog.annotation.LoginStatusCheck;
 import org.jewelknife.jblog.jpa.Blog;
 import org.jewelknife.jblog.jpa.BlogRepository;
 import org.jewelknife.jblog.jpa.User;
-import org.jewelknife.jblog.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  * Created by chen_yingbo on 11/19/14.
@@ -27,43 +27,51 @@ public class BlogController {
     @Autowired
     private BlogRepository blogRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @RequestMapping(value="/list")
+    @RequestMapping(value="/list", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Page<Blog> list() {
-        Pageable page = new PageRequest(0, PAGE_LIMIT, Sort.Direction.DESC, "id");
-        return blogRepository.findAll(page);
+    public Page<Blog> listWithJson(@RequestParam(defaultValue = "0", required = false) String page, @RequestParam(defaultValue = "0", required = false) Long user_id) {
+        return this.getPageBean(page, user_id);
+    }
+
+    @RequestMapping(value="/list", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public Page<Blog> listWithXML(@RequestParam(defaultValue = "0", required = false) String page, @RequestParam(defaultValue = "0", required = false) Long user_id) {
+        return this.getPageBean(page, user_id);
+    }
+
+    @RequestMapping(value="/list", produces = MediaType.TEXT_HTML_VALUE)
+    public ModelAndView list(@RequestParam(defaultValue = "0", required = false) String page, @RequestParam(defaultValue = "0", required = false) Long user_id) {
+        ModelAndView modelAndView = new ModelAndView("/blog/list");
+        modelAndView.getModel().put("pageBean", this.getPageBean(page, user_id));
+        return modelAndView;
     }
 
     @RequestMapping(value="/page/{id}")
     public ModelAndView showOne(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/blog/blog_page_item");
+        ModelAndView modelAndView = new ModelAndView("/blog/blog_page_item");
         modelAndView.getModel().put("blog", blogRepository.findOne(id));
         return modelAndView;
     }
 
-    @RequestMapping(value="/author/{name}")
+    @RequestMapping(value="/author/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Page<Blog> list(@PathVariable String name, @RequestParam(defaultValue = "0", required = false) String page) {
-        int pageInt = 0;
-        if (StringUtils.isNumeric(page) && Integer.parseInt(page) > 0) {
-            pageInt = Integer.parseInt(page) - 1;
-        }
-        Pageable pageRequest = new PageRequest(pageInt, PAGE_LIMIT);
-        User user = userRepository.findByUsername(name);
-        if (user == null) {
-            return new PageImpl<Blog>(new ArrayList<Blog>(), pageRequest, 0);
-        }
-        return blogRepository.findByCreatedBy(user.getId(), pageRequest);
+    public Page<Blog> listByAuthorWithJson(@PathVariable Long id, @RequestParam(defaultValue = "0", required = false) String page) {
+        return this.getPageBean(page, id);
     }
 
+    @RequestMapping(value="/author/{id}")
+    public ModelAndView listByAuthor(@PathVariable Long id, @RequestParam(defaultValue = "0", required = false) String page) {
+        ModelAndView modelAndView = new ModelAndView("/blog/list");
+        modelAndView.getModel().put("pageBean", this.getPageBean(page, id));
+        return modelAndView;
+    }
+
+    @LoginStatusCheck
     @RequestMapping(value="/create", method = RequestMethod.GET)
     public void getCreatePage() {
     }
 
+    @LoginStatusCheck
     @RequestMapping(value="/create", method = RequestMethod.POST)
     public String create(Blog form, Model model, HttpSession session) {
         Blog blog = null;
@@ -71,6 +79,7 @@ public class BlogController {
             form.setCreatedBy(((User)session.getAttribute("loginUser")).getId());
             blog = blogRepository.save(form);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         if (blog == null) {
             model.addAttribute("errorMsg", "Save blog fail !");
@@ -78,5 +87,20 @@ public class BlogController {
             return null;
         }
         return "redirect:/blog/page/" + blog.getId();
+    }
+
+    private Page<Blog> getPageBean(String page, long user_id) {
+        int pageInt = 0;
+        if (StringUtils.isNumeric(page) && Integer.parseInt(page) > 0) {
+            pageInt = Integer.parseInt(page) - 1;
+        }
+        Pageable pageRequest = new PageRequest(pageInt, PAGE_LIMIT, Sort.Direction.DESC, "id");
+        Page<Blog> pageBean;
+        if (user_id > 0) {
+            pageBean = blogRepository.findByCreatedBy(user_id, pageRequest);
+        } else {
+            pageBean = blogRepository.findAll(pageRequest);
+        }
+        return pageBean;
     }
 }

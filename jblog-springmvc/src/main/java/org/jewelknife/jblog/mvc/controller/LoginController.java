@@ -27,21 +27,22 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(User userform, Model model, HttpSession session) {
         User user = userRepository.findByUsername(userform.getUsername());
-
         if (user == null) {
             model.addAttribute("errorMsg", "User is not existst !");
             return null;
         }
-
         user = userRepository.findByUsernameAndPassword(userform.getUsername(), userform.getPassword());
-
         if (user == null) {
             model.addAttribute("errorMsg", "Password is not correctly !");
             return null;
         }
-
         session.setAttribute("loginUser", user);
+        return "redirect:/home";
+    }
 
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session) {
+        session.setAttribute("loginUser", null);
         return "redirect:/home";
     }
 

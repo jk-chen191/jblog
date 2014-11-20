@@ -13,5 +13,8 @@
     <!--<context:annotation-config />-->
     <mvc:annotation-driven />
     <context:component-scan base-package="org.jewelknife.jblog.mvc" />
+    <mvc:interceptors>
+        <bean class="org.jewelknife.jblog.intercepter.SimpleIntercepter" />
+    </mvc:interceptors>
 
 </beans>
