@@ -1,0 +1,3 @@
+通过一个简单blog的例子, 分别组合测试springmvc, struts2, spring-data, freemarker, jQuery等多种常见技术.
+本例子中用到"Metronic - Admin Dashboard Template"的基于bootstrap风格的前端框架, 未本例子提供一个良好的ui界面.
+本例子重在探究web技术的简洁开发, 并未完善blog的所有功能.

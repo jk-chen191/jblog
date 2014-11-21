@@ -1,5 +1,6 @@
 package org.jewelknife.jblog.mvc.controller;
 
+import org.jewelknife.common.utils.MD5Util;
 import org.jewelknife.jblog.jpa.User;
 import org.jewelknife.jblog.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class LoginController {
             model.addAttribute("errorMsg", "User is not existst !");
             return null;
         }
-        user = userRepository.findByUsernameAndPassword(userform.getUsername(), userform.getPassword());
+        user = userRepository.findByUsernameAndPassword(userform.getUsername(), MD5Util.MD5(userform.getPassword()));
         if (user == null) {
             model.addAttribute("errorMsg", "Password is not correctly !");
             return null;
@@ -44,6 +45,22 @@ public class LoginController {
     public String logout(HttpSession session) {
         session.setAttribute("loginUser", null);
         return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/reg", method = RequestMethod.POST)
+    public String reg(User userform, Model model) {
+        User user = userRepository.findByUsername(userform.getUsername());
+        if (user != null) {
+            model.addAttribute("errorMsg", "User is aready existst !");
+            return "/login/login";
+        }
+        userform.setPassword(MD5Util.MD5(userform.getPassword()));
+        user = userRepository.save(userform);
+        if (user == null) {
+            model.addAttribute("errorMsg", "Reg fail !");
+            return "/login/login";
+        }
+        return "redirect:/login/login";
     }
 
 }

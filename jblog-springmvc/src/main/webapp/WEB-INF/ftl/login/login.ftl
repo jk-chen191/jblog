@@ -120,7 +120,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     </form>
     <!-- END FORGOT PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
-    <form class="register-form" action="/reg" method="post">
+    <form class="register-form" action="${rc.contextPath}/login/reg" method="post">
         <h3 >Sign Up</h3>
         <p>Enter your personal details below:</p>
         <div class="form-group">
@@ -189,7 +189,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2013 &copy; Metronic - Admin Dashboard Template.
+    2014 &copy; jBlog.
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

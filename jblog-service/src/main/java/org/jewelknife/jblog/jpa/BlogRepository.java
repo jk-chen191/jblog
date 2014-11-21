@@ -14,8 +14,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface BlogRepository extends Repository<Blog, Long> {
 
-    List<Blog> findAll();
-
     Page<Blog> findAll(Pageable pageable);
 
     Page<Blog> findByCreatedBy(Long createdBy, Pageable pageable);
